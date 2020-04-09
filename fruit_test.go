@@ -27,6 +27,16 @@ func TestFruitCRUD(t *testing.T) {
 		test.Equals(t, int64(1), affectedRow)
 	})
 
+	t.Run("Update_same_member", func(t *testing.T) {
+		id := 2
+		f := &Fruit{
+			Code:"blue",
+		}
+		affectedRow, err := f.Update(id)
+		test.Ok(t, err)
+		test.Equals(t, int64(1), affectedRow)
+	})
+
 	t.Run("insert_unique_code", func(t *testing.T) {
 		f := &Fruit{
 			Code:"red",
